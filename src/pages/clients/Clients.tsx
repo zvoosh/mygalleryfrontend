@@ -61,7 +61,15 @@ const ClientsPage = () => {
       }) || [],
   }) as UseQueryResult<string, unknown>[];
 
-  if (isClientsLoading && isLoading)
+  const areTitleQueriesLoading = titleQueries.some((q) => q.isLoading);
+  const areDescQueriesLoading = descQueries.some((q) => q.isLoading);
+
+  const allLoading =
+    isLoading ||
+    isClientsLoading ||
+    areTitleQueriesLoading ||
+    areDescQueriesLoading;
+  if (allLoading)
     return (
       <div
         style={{
@@ -80,7 +88,6 @@ const ClientsPage = () => {
       </div>
     );
   if (isClientsError && error) return <div>Error loading files.</div>;
-
   return (
     <div className="pb-2 text-gray w-100 h-100 flex flex-column normal-font font-12">
       {thumbnail && thumbnail.children ? (
@@ -136,7 +143,10 @@ const ClientsPage = () => {
                     );
                     return (
                       <article key={index} className="client-card-container">
-                        {!titleIsLoading && !descIsLoading && titleTXT && descTXT ? (
+                        {!titleIsLoading &&
+                        !descIsLoading &&
+                        titleTXT &&
+                        descTXT ? (
                           <div className="w-100 h-100 flex ">
                             <div className="client-image-card">
                               {imageFile ? (
