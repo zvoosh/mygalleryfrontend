@@ -7,7 +7,7 @@ const CoorporatePage = () => {
   //   data,
   //   isLoading: loadingVideo,
   //   error: errorVideo,
-  // } = useDriveFiles("1A5aK0y7ef2IJzHo_lMm4IuiX4rjPivBg", GOOGLE_API_KEY);
+  // } = useDriveFiles("1A5aK0y7ef2IJzHo_lMm4IuiX4rjPivBg");
 
   // if (loadingVideo)
   //   return (

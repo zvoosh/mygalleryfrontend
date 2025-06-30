@@ -1,12 +1,10 @@
 import { LoadingOutlined } from "@ant-design/icons";
 import { Spin } from "antd";
-import { GOOGLE_API_KEY } from "../../api";
 import { useFolderTreeQuery } from "../../api/queries";
 
 const VIDEO_ID = "1Z2r4GcK6GJSZdQ9ivwOU4eG7hnDE65ou";
 const BehindTheSceensPage = () => {
   const { data, isLoading, error } = useFolderTreeQuery(VIDEO_ID);
-
 
   if (isLoading)
     return (
@@ -65,18 +63,19 @@ const BehindTheSceensPage = () => {
                 little time. The problem is us. And it is up to us if we want to
                 make it to 3 seconds.
               </p>
-              <video
-                className="w-100 mb-1"
-                controls
-                preload="auto"
-                title="Behind the scenes video with environmental message"
-              >
-                <source
-                  src={`https://www.googleapis.com/drive/v3/files/${data?.children![0].id}?alt=media&key=${GOOGLE_API_KEY}`}
-                  type="video/mp4"
+              <div className="w-100 h-100 mt-5">
+                <iframe
+                  src={`https://drive.google.com/file/d/${
+                    data?.children![0].id
+                  }/preview`}
+                  width="100%"
+                  height="780"
+                  allow="autoplay"
+                  className="border-none"
+                  allowFullScreen
+                  title="Google Drive Video"
                 />
-                Your browser does not support the video tag.
-              </video>
+              </div>
             </div>
           </section>
         </div>
