@@ -1,25 +1,11 @@
-import { Carousel, Spin } from "antd";
+import {  Spin } from "antd";
 import "../../styles/event.scss";
 import "../../styles/clients.scss";
 import { useParams } from "react-router";
-import { useRef } from "react";
 import { useFolderContent } from "../../api/queries";
 import { LoadingOutlined } from "@ant-design/icons";
 
-interface CarouselRef {
-  goTo: (slide: number, dontAnimate?: boolean) => void;
-  next: () => void;
-  prev: () => void;
-  autoPlay: () => void;
-  innerSlider: any;
-  slickGoTo: (slide: number, dontAnimate?: boolean) => void;
-  slickNext: () => void;
-  slickPrev: () => void;
-  slickPause: () => void;
-  slickPlay: () => void;
-}
 const ClientDetailsPage = () => {
-  const carouselRef = useRef<CarouselRef>(null!);
   const { videoId } = useParams();
 
   const { data, isLoading, error } = useFolderContent(videoId);

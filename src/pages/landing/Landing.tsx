@@ -7,7 +7,7 @@ import { Link } from "react-router";
 import { useFolderTreeQuery } from "../../api/queries";
 
 const LandingPage = () => {
-  const { data, isLoading, error, isSuccess } = useFolderTreeQuery(
+  const { data, error } = useFolderTreeQuery(
     "1_qQjN6SWT-9y0hRwUd1_mFpqnkT-GG9X"
   );
   if (error) return <div>Error loading files.</div>;

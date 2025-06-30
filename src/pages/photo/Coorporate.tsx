@@ -1,9 +1,4 @@
 import "../../styles/portrait.scss";
-import { useContext } from "react";
-import { MyContext } from "../../services";
-import { Image, Spin } from "antd";
-import { GOOGLE_API_KEY } from "../../api";
-import { LoadingOutlined } from "@ant-design/icons";
 
 const CoorporatePage = () => {
   // const ctx = useContext(MyContext);

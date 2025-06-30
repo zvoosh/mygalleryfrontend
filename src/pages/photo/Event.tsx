@@ -1,12 +1,6 @@
 import "../../styles/event.scss";
-import { useContext } from "react";
-import { MyContext } from "../../services";
-import { Image, Spin } from "antd";
-import { GOOGLE_API_KEY } from "../../api";
-import { LoadingOutlined } from "@ant-design/icons";
 
 const EventPage = () => {
-  const ctx = useContext(MyContext);
 
 
   // if (loadingVideo)

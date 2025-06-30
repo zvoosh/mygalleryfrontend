@@ -129,12 +129,10 @@ const ClientsPage = () => {
                     const {
                       data: title,
                       isLoading: titleIsLoading,
-                      isError: titleIsError,
                     } = titleQueries[index];
                     const {
                       data: desc,
                       isLoading: descIsLoading,
-                      isError: descIsError,
                     } = descQueries[index];
                     const titleTXT = title?.trim();
                     const descTXT = desc?.trim();
