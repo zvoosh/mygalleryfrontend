@@ -1,11 +1,10 @@
-import { Carousel } from "antd";
-import video from "../../assets/brige.mp4";
+import { Carousel, Spin } from "antd";
 import "../../styles/event.scss";
 import "../../styles/clients.scss";
 import { useParams } from "react-router";
-import { useRef, useState } from "react";
-
-const videoSources = [{ src: video }, { src: video }, { src: video }];
+import { useRef } from "react";
+import { useFolderContent } from "../../api/queries";
+import { LoadingOutlined } from "@ant-design/icons";
 
 interface CarouselRef {
   goTo: (slide: number, dontAnimate?: boolean) => void;
@@ -21,18 +20,30 @@ interface CarouselRef {
 }
 const ClientDetailsPage = () => {
   const carouselRef = useRef<CarouselRef>(null!);
-  const [videoPlaying, setVideoPlaying] = useState(false);
-  const { client } = useParams();
+  const { videoId } = useParams();
 
-  const handleVideoPlaying = () => {
-    setVideoPlaying(true);
-    carouselRef.current?.slickPause();
-  };
+  const { data, isLoading, error } = useFolderContent(videoId);
 
-  const handleVideoPauseOrEnd = () => {
-    setVideoPlaying(false);
-    carouselRef.current?.slickPlay();
-  };
+
+  if (isLoading)
+    return (
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Spin
+          indicator={
+            <LoadingOutlined style={{ fontSize: 48, color: "gray" }} spin />
+          }
+        />
+      </div>
+    );
+  if (error) return <div>Error loading files.</div>;
 
   return (
     <main className="w-100 h-100 text-gray">
@@ -41,7 +52,7 @@ const ClientDetailsPage = () => {
           <div>
             <section>
               <h1 className="font-20 normal-font pb-2 text-white w-100">
-                {client}
+                {data?.name}
               </h1>
               <div className="pb-2 normal-font font-12">
                 <p className="pb-1">
@@ -62,29 +73,33 @@ const ClientDetailsPage = () => {
                 </p>
               </div>
             </section>
-            <Carousel
-              autoplay={!videoPlaying}
+            {/* <Carousel
+              autoplay={false}
               autoplaySpeed={3000}
               ref={carouselRef}
               arrows={true}
               dots={false}
-            >
-              {videoSources.map((video, idx) => (
-                <figure key={idx}>
-                  <video
-                    className="w-100 mb-1"
-                    controls
-                    onPlaying={handleVideoPlaying}
-                    onPause={handleVideoPauseOrEnd}
-                    onEnded={handleVideoPauseOrEnd}
-                    preload="auto"
-                  >
-                    <source src={video.src} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                </figure>
-              ))}
-            </Carousel>
+            > */}
+              {data?.children?.map((video, idx) => {
+                if (video.name == "Videos" && video.children) {
+                  return video.children.map((item: any) => {
+                    return (
+                      <div key={idx} className="w-100 h-100 mt-5">
+                        <iframe
+                          src={`https://drive.google.com/file/d/${item.id}/preview`}
+                          width="100%"
+                          height="780"
+                          allow="autoplay"
+                          className="border-none"
+                          allowFullScreen
+                          title="Google Drive Video"
+                        />
+                      </div>
+                    );
+                  });
+                }
+              })}
+            {/* </Carousel> */}
           </div>
         </div>
       </div>

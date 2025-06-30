@@ -1,8 +1,9 @@
 import { Outlet, useLocation } from "react-router";
 import { Header } from "../components/Header";
-import { MyProvider } from "../services";
-
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useState } from "react";
 const RootLayout = () => {
+  const [queryClient] = useState(() => new QueryClient());
   const location = useLocation();
   return (
     <div
@@ -15,10 +16,10 @@ const RootLayout = () => {
       }}
       className="scrollable-div"
     >
-      <MyProvider>
+      <QueryClientProvider client={queryClient}>
         {location.pathname !== "/" && <Header />}
         <Outlet />
-      </MyProvider>
+      </QueryClientProvider>
     </div>
   );
 };

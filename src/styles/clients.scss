@@ -2,7 +2,7 @@
   .client-details-container {
     width: 100%;
     height: 100%;
-    padding: .5rem;
+    padding: 0.5rem;
   }
   .client-container {
     width: 100%;
@@ -165,7 +165,6 @@
   }
 }
 @media (min-width: 1024px) {
-
   .client-details-container {
     width: 100%;
     padding: 4rem;
@@ -219,7 +218,6 @@
 @media (min-width: 1440px) {
   .client-details-container {
     width: 1330px;
-    height: 100%;
     padding: 4rem;
   }
   .thumbnail {
@@ -229,24 +227,28 @@
   }
   .client-container {
     width: 1330px;
-    height: auto;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    padding: 0rem;
+    align-items: center;
   }
   .client-card-container {
     display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 1330px;
     margin-bottom: 4rem;
+    flex-wrap: wrap;
   }
   .client-image-card {
-    width: auto;
-    height: 100%;
-    padding-left: 2rem;
+    width: 400px;
+    height: 300px;
+    margin-right: 2rem;
+    flex-shrink: 0;
   }
   .client-text-card {
-    width: 75%;
-    height: 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -260,6 +262,7 @@
     margin-top: 1rem;
     border: 1px solid white;
     transition: all 0.2s ease-in-out;
+    text-decoration: none;
   }
   .link-see-more:hover {
     color: black;

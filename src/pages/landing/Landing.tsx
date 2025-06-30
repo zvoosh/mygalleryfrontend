@@ -1,13 +1,16 @@
-import { CiFacebook, CiInstagram, CiMail, CiYoutube } from "react-icons/ci";
+import { ReactTyped } from "react-typed";
 import { Carousel } from "antd";
 import "antd/dist/reset.css";
-import { ReactTyped } from "react-typed";
-import image from "../../assets/road.jpg";
-import image2 from "../../assets/baloons.jpg";
-import image3 from "../../assets/mountins.jpg";
+import { CiFacebook, CiInstagram, CiMail, CiYoutube } from "react-icons/ci";
 import "../../styles/landing.scss";
+import { Link } from "react-router";
+import { useFolderTreeQuery } from "../../api/queries";
 
 const LandingPage = () => {
+  const { data, isLoading, error, isSuccess } = useFolderTreeQuery(
+    "1_qQjN6SWT-9y0hRwUd1_mFpqnkT-GG9X"
+  );
+  if (error) return <div>Error loading files.</div>;
   return (
     <main
       className="landing-wrapper header-font"
@@ -21,9 +24,16 @@ const LandingPage = () => {
           pauseOnHover={false}
           draggable={false}
         >
-          <img src={image} alt="Portrait of VACO capturized moments" />
-          <img src={image2} alt="Portrait of VACO capturized moments" />
-          <img src={image3} alt="Portrait of VACO capturized moments" />
+          {data &&
+            data.children &&
+            data.children.map((item: any) => {
+              return (
+                <img
+                  src={`https://drive.google.com/thumbnail?id=${item.id}&sz=w1000`}
+                  alt="Portrait of VACO capturized moments"
+                />
+              );
+            })}
         </Carousel>
       </section>
 
@@ -42,13 +52,11 @@ const LandingPage = () => {
               typeSpeed={100}
             />
           </h2>
-          <p className="uppercase italic pb-1">
-            Photographer & storyteller
-          </p>
+          <p className="uppercase italic pb-1">Photographer & storyteller</p>
           <div className="w-100 flex justify-center">
-            <a href="/vaco/video" className="landing-btn">
+            <Link to="/video" className="landing-btn">
               View work
-            </a>
+            </Link>
           </div>
         </div>
         <div className="text-white mb-2">

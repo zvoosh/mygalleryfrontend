@@ -1,33 +1,37 @@
-import image from "../../assets/unnamed.jpg";
-import image2 from "../../assets/baloons.jpg";
-import image3 from "../../assets/mountins.jpg";
-import image4 from "../../assets/mountain.jpg";
-import image5 from "../../assets/portrait.jpg";
 import "../../styles/event.scss";
 import { useContext } from "react";
 import { MyContext } from "../../services";
-import { Image } from "antd";
-
-const images = [
-  { src: image, alt: "image1", description: "vale's image" },
-  { src: image2, alt: "image", description: "web's image" },
-  { src: image3, alt: "image1", description: "vale's image" },
-  { src: image4, alt: "image", description: "web's image" },
-  { src: image5, alt: "image1", description: "vale's image" },
-  { src: image, alt: "image", description: "web's image" },
-  { src: image2, alt: "image1", description: "vale's image" },
-  { src: image3, alt: "image", description: "web's image" },
-  { src: image4, alt: "image1", description: "vale's image" },
-  { src: image5, alt: "image1", description: "vale's image" },
-  { src: image, alt: "image", description: "web's image" },
-  { src: image2, alt: "image1", description: "vale's image" },
-];
+import { Image, Spin } from "antd";
+import { GOOGLE_API_KEY } from "../../api";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const EventPage = () => {
   const ctx = useContext(MyContext);
+
+
+  // if (loadingVideo)
+  //   return (
+  //     <div
+  //       style={{
+  //         width: "100vw",
+  //         height: "100vh",
+  //         display: "flex",
+  //         alignItems: "center",
+  //         justifyContent: "center",
+  //       }}
+  //     >
+  //       <Spin
+  //         indicator={
+  //           <LoadingOutlined style={{ fontSize: 48, color: "gray" }} spin />
+  //         }
+  //       />
+  //     </div>
+  //   );
+  // if (errorVideo) return <div>Error loading files.</div>;
+
   return (
     <main className="pt-2">
-      <h1
+      {/* <h1
         id="gallery-heading"
         className="visually-hidden"
         style={{ position: "absolute" }}
@@ -38,23 +42,16 @@ const EventPage = () => {
         <div className="w-100 h-100 flex justify-center">
           {!ctx?.value && (
             <div className="card-grid">
-              {images.length === 0 ? (
+              {data && data.files ? (
                 <p className="text-center">No images available at this time</p>
               ) : (
-                <Image.PreviewGroup
-                  preview={{
-                    onChange: (current, prev) =>
-                      console.log(
-                        `current index: ${current}, prev index: ${prev}`
-                      ),
-                  }}
-                >
-                  {images.map((element, index) => (
+                <Image.PreviewGroup>
+                  {data.map((element: any, index: number) => (
                     <Image
-                      key={index}
                       loading="eager"
-                      src={element.src}
-                      alt={element.alt}
+                      key={index}
+                      src={`https://drive.google.com/thumbnail?id=${element.id}&sz=w1000`}
+                      alt={element.name}
                       className="responsive"
                       style={{
                         width: "100%",
@@ -68,7 +65,7 @@ const EventPage = () => {
             </div>
           )}
         </div>
-      </div>
+      </div> */}
     </main>
   );
 };

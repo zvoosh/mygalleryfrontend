@@ -1,6 +1,33 @@
-import video from "../../assets/brige.mp4";
+import { LoadingOutlined } from "@ant-design/icons";
+import { Spin } from "antd";
+import { GOOGLE_API_KEY } from "../../api";
+import { useFolderTreeQuery } from "../../api/queries";
 
+const VIDEO_ID = "1Z2r4GcK6GJSZdQ9ivwOU4eG7hnDE65ou";
 const BehindTheSceensPage = () => {
+  const { data, isLoading, error } = useFolderTreeQuery(VIDEO_ID);
+
+
+  if (isLoading)
+    return (
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Spin
+          indicator={
+            <LoadingOutlined style={{ fontSize: 48, color: "gray" }} spin />
+          }
+        />
+      </div>
+    );
+  if (error) return <div>Error loading files.</div>;
+
   return (
     <main className="w-100 h-100 text-gray">
       <div className="flex justify-center w-100 h-100">
@@ -38,8 +65,16 @@ const BehindTheSceensPage = () => {
                 little time. The problem is us. And it is up to us if we want to
                 make it to 3 seconds.
               </p>
-              <video className="w-100 mb-1" controls preload="auto" title="Behind the scenes video with environmental message">
-                <source src={video} type="video/mp4" />
+              <video
+                className="w-100 mb-1"
+                controls
+                preload="auto"
+                title="Behind the scenes video with environmental message"
+              >
+                <source
+                  src={`https://www.googleapis.com/drive/v3/files/${data?.children![0].id}?alt=media&key=${GOOGLE_API_KEY}`}
+                  type="video/mp4"
+                />
                 Your browser does not support the video tag.
               </video>
             </div>

@@ -10,11 +10,6 @@ const Header = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.log(location.pathname);
-    console.log(location.pathname.includes("clients"));
-  }, [location.pathname]);
-
-  useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);
   return (
