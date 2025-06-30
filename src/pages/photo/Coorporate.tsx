@@ -2,12 +2,10 @@ import { Image } from "antd";
 import "../../styles/portrait.scss";
 import { filterFolder } from "../../hooks";
 import { useContext } from "react";
-import { MyContext } from "../../services";
 import { MyDataContext } from "../../services/ctx/data.ctx";
 import { Link } from "react-router";
 
 const CoorporatePage = () => {
-  const ctx = useContext(MyContext);
   const ctxData = useContext(MyDataContext);
   const corporatePhotos =
     ctxData?.data &&

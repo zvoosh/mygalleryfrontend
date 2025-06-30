@@ -1,13 +1,11 @@
 import "../../styles/portrait.scss";
 import { useContext } from "react";
-import { MyContext } from "../../services";
 import { Image } from "antd";
 import { MyDataContext } from "../../services/ctx/data.ctx";
 import { filterFolder } from "../../hooks";
 import { Link } from "react-router";
 
 const PortraitPage = () => {
-  const ctx = useContext(MyContext);
   const ctxData = useContext(MyDataContext);
   const corporatePhotos =
     ctxData?.data &&

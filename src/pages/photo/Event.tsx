@@ -1,13 +1,11 @@
 import { useContext } from "react";
 import "../../styles/event.scss";
-import { MyContext } from "../../services";
 import { MyDataContext } from "../../services/ctx/data.ctx";
 import { Image } from "antd";
 import { filterFolder } from "../../hooks";
 import { Link } from "react-router";
 
 const EventPage = () => {
-  const ctx = useContext(MyContext);
   const ctxData = useContext(MyDataContext);
   const corporatePhotos =
     ctxData?.data &&
