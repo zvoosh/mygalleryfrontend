@@ -1,31 +1,21 @@
+import { useContext } from "react";
 import "../../styles/event.scss";
+import { MyContext } from "../../services";
+import { MyDataContext } from "../../services/ctx/data.ctx";
+import { Image } from "antd";
+import { filterFolder } from "../../hooks";
+import { Link } from "react-router";
 
 const EventPage = () => {
-
-
-  // if (loadingVideo)
-  //   return (
-  //     <div
-  //       style={{
-  //         width: "100vw",
-  //         height: "100vh",
-  //         display: "flex",
-  //         alignItems: "center",
-  //         justifyContent: "center",
-  //       }}
-  //     >
-  //       <Spin
-  //         indicator={
-  //           <LoadingOutlined style={{ fontSize: 48, color: "gray" }} spin />
-  //         }
-  //       />
-  //     </div>
-  //   );
-  // if (errorVideo) return <div>Error loading files.</div>;
+  const ctx = useContext(MyContext);
+  const ctxData = useContext(MyDataContext);
+  const corporatePhotos =
+    ctxData?.data &&
+    filterFolder(ctxData.data, "EventPhoto")?.children?.[0]?.children;
 
   return (
     <main className="pt-2">
-      {/* <h1
+      <h1
         id="gallery-heading"
         className="visually-hidden"
         style={{ position: "absolute" }}
@@ -34,32 +24,45 @@ const EventPage = () => {
       </h1>
       <div className="w-100 h-100 flex justify-center">
         <div className="w-100 h-100 flex justify-center">
-          {!ctx?.value && (
-            <div className="card-grid">
-              {data && data.files ? (
-                <p className="text-center">No images available at this time</p>
-              ) : (
-                <Image.PreviewGroup>
-                  {data.map((element: any, index: number) => (
-                    <Image
-                      loading="eager"
-                      key={index}
-                      src={`https://drive.google.com/thumbnail?id=${element.id}&sz=w1000`}
-                      alt={element.name}
-                      className="responsive"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  ))}
-                </Image.PreviewGroup>
-              )}
-            </div>
-          )}
+          <div className="card-grid">
+            {corporatePhotos && corporatePhotos.length > 0 ? (
+              <Image.PreviewGroup>
+                {corporatePhotos.map((element: any, index: number) => (
+                  <Image
+                    loading="eager"
+                    key={index}
+                    src={`https://drive.google.com/thumbnail?id=${element.id}&sz=w1000`}
+                    alt={element.name}
+                    className="responsive"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
+                ))}
+              </Image.PreviewGroup>
+            ) : (
+              <div className="text-center text-white">
+                No images available at this time
+                <Link to="/photo" className="w-100 mt-1 flex justify-center">
+                  <div
+                    className="decoration-none text-black"
+                    style={{
+                      width: "fit-content",
+                      border: "1px solid white",
+                      backgroundColor: "white",
+                      padding: ".5rem 1rem",
+                    }}
+                  >
+                    Back
+                  </div>
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
-      </div> */}
+      </div>
     </main>
   );
 };
