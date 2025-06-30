@@ -6,7 +6,6 @@ import { useFolderTreeQuery } from "../../api/queries";
 import { type DriveItem } from "../../services/ctx/data.ctx";
 import { fetchFileContent } from "../../api";
 import { useQueries, type UseQueryResult } from "@tanstack/react-query";
-
 const THUMBNAIL_ID = "1tlyPIwkYyLOlKg0BippLyCzBYP811F0I";
 const CLIENTS_ID = "1RPL5eVTRM6fAKuOdwUq-GlupVHO1yerW";
 const ClientsPage = () => {
@@ -88,6 +87,12 @@ const ClientsPage = () => {
       </div>
     );
   if (isClientsError && error) return <div>Error loading files.</div>;
+  const limitWords = (text: string, maxWords: number): string => {
+    const words = text.trim().split(/\s+/); // handles multiple spaces
+    const trimmed = words.slice(0, maxWords).join(" ");
+    return words.length > maxWords ? trimmed + "…" : text;
+  };
+
   return (
     <div className="pb-2 text-gray w-100 h-100 flex flex-column normal-font font-12 fade-in-on-load-content">
       {thumbnail && thumbnail.children ? (
@@ -126,14 +131,10 @@ const ClientsPage = () => {
                   clients &&
                   clients.children &&
                   clients.children.map((element: any, index: number) => {
-                    const {
-                      data: title,
-                      isLoading: titleIsLoading,
-                    } = titleQueries[index];
-                    const {
-                      data: desc,
-                      isLoading: descIsLoading,
-                    } = descQueries[index];
+                    const { data: title, isLoading: titleIsLoading } =
+                      titleQueries[index];
+                    const { data: desc, isLoading: descIsLoading } =
+                      descQueries[index];
                     const titleTXT = title?.trim();
                     const descTXT = desc?.trim();
                     const imageFile = element.children.find((f: DriveItem) =>
@@ -162,11 +163,12 @@ const ClientsPage = () => {
                             </div>
                             <div className="client-text-card">
                               <h2 className="font-16">{titleTXT}</h2>
-                              <p className="pt-1">{descTXT}</p>
+                              <p className="pt-1">{limitWords(descTXT, 10)}</p>
                               <Link
                                 to={`/clients/details/${encodeURIComponent(
                                   titleTXT
                                 )}/${element.id}`}
+                                state={{ description: descTXT }}
                                 className="link-see-more"
                               >
                                 Show more
@@ -174,10 +176,7 @@ const ClientsPage = () => {
                             </div>
                           </div>
                         ) : (
-                          <div
-                          >
-                            
-                          </div>
+                          <div></div>
                         )}
                       </article>
                     );
