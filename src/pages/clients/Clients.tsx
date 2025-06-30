@@ -102,7 +102,7 @@ const ClientsPage = () => {
           </div>
           <div className="w-100 flex justify-center">
             <div className="client-container">
-              <div className="w-100 h-100 pt-2 flex flex-column">
+              <div className="w-100 h-100 pt-2 flex flex-column justify-center dy-pl-5">
                 {clients && clients.children && clients.children!.length < 1 ? (
                   <div
                     style={{
@@ -145,7 +145,7 @@ const ClientsPage = () => {
                         !descIsLoading &&
                         titleTXT &&
                         descTXT ? (
-                          <div className="w-100 h-100 flex ">
+                          <div className="w-100 h-100 flex justify-center dy-wrap">
                             <div className="client-image-card">
                               {imageFile ? (
                                 <img

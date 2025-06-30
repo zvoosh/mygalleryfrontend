@@ -18,26 +18,33 @@
     padding: 1rem;
   }
   .client-card-container {
-    width: 100%;
-    height: auto;
     display: flex;
-    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 1330px;
     margin-bottom: 4rem;
-    padding: 1rem;
+    flex-wrap: wrap;
   }
   .client-image-card {
     width: 100%;
-    height: auto;
-    padding-bottom: 1rem;
+    height: 250px;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    flex-shrink: 0;
   }
   .client-text-card {
     width: 100%;
     height: 100%;
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     color: white;
     overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
   }
   .link-see-more {
     color: white;
@@ -51,6 +58,12 @@
     color: black;
     background-color: white;
     cursor: pointer;
+  }
+  .dy-wrap {
+    flex-wrap: wrap;
+  }
+  .dy-pl-5 {
+    padding-left: 2rem;
   }
 }
 
@@ -75,14 +88,18 @@
   }
   .client-card-container {
     display: flex;
-    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 1330px;
     margin-bottom: 4rem;
-    // padding: 1rem;
+    flex-wrap: wrap;
   }
   .client-image-card {
     width: 100%;
-    height: auto;
-    padding: 1rem;
+    height: 400px;
+    margin-right: 2rem;
+    flex-shrink: 0;
   }
   .client-text-card {
     width: 100%;
@@ -90,10 +107,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    // padding-top: 1rem;
-    padding: 0 1rem 0 1rem;
+    margin-top: 1rem;
+    // padding: 0 1rem 0 1rem;
     color: white;
     overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
   }
   .link-see-more {
     color: white;
@@ -107,6 +127,12 @@
     color: black;
     background-color: white;
     cursor: pointer;
+  }
+  .dy-wrap {
+    flex-wrap: wrap;
+  }
+  .dy-pl-5 {
+    padding-left: 2rem;
   }
 }
 @media (min-width: 768px) {
@@ -130,25 +156,33 @@
   }
   .client-card-container {
     display: flex;
-    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 1330px;
     margin-bottom: 4rem;
-    // padding: 1rem;
+    flex-wrap: wrap;
   }
   .client-image-card {
     width: 100%;
-    height: auto;
-    padding: 1rem;
+    height: 600px;
+    margin-right: 2rem;
+    flex-shrink: 0;
   }
   .client-text-card {
     width: 100%;
     height: 100%;
     display: flex;
+    margin-top: 2rem;
     flex-direction: column;
     justify-content: center;
     // padding-top: 1rem;
     padding: 0 1rem 0 1rem;
     color: white;
     overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
   }
   .link-see-more {
     color: white;
@@ -163,8 +197,42 @@
     background-color: white;
     cursor: pointer;
   }
+  .dy-wrap {
+    flex-wrap: wrap;
+  }
+  .dy-pl-5 {
+    padding-left: 2rem;
+  }
+}
+@media (min-width: 912px) {
+  .dy-wrap {
+    flex-wrap: nowrap;
+  }
+  .dy-pl-5 {
+    padding-left: 2rem;
+  }
+  .client-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    // max-width: 1330px;
+    flex-wrap: wrap;
+  }
+  .client-image-card {
+    width: 400px;
+    height: 300px;
+    margin-right: 2rem;
+    flex-shrink: 0;
+  }
 }
 @media (min-width: 1024px) {
+  .dy-wrap {
+    flex-wrap: nowrap;
+  }
+  .dy-pl-5 {
+    padding-left: 5rem;
+  }
   .client-details-container {
     width: 100%;
     padding: 4rem;
@@ -184,17 +252,22 @@
   }
   .client-card-container {
     display: flex;
-    margin-bottom: 4rem;
-    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    // max-width: 1330px;
+    flex-wrap: wrap;
   }
   .client-image-card {
-    width: auto;
-    height: 100%;
-    padding-left: 2rem;
+    width: 280px;
+    height: 200px;
+    margin-right: 2rem;
+    flex-shrink: 0;
   }
   .client-text-card {
     width: 75%;
     height: 100%;
+    margin-top: 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;
