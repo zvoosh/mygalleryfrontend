@@ -73,10 +73,8 @@ const ClientDetailsPage = () => {
                       <div key={idx} className="w-100 h-100 mt-5">
                         <iframe
                           src={`https://drive.google.com/file/d/${item.id}/preview`}
-                          width="100%"
-                          height="780"
                           allow="autoplay"
-                          className="border-none"
+                          className="border-none video-frame"
                           allowFullScreen
                           title="Google Drive Video"
                         />

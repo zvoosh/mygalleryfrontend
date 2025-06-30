@@ -19,7 +19,9 @@ const VideoDetailsPage = ({
   const thumbnailFolder = ctx?.data?.children?.find((f) =>
     f.name.includes(folderthumbnail)
   );
-  const videoFolder = ctx?.data?.children?.find((f) => f.name.includes(foldervideo));
+  const videoFolder = ctx?.data?.children?.find((f) =>
+    f.name.includes(foldervideo)
+  );
   const imageId = thumbnailFolder?.children?.[0]?.id;
 
   useEffect(() => {
@@ -54,10 +56,8 @@ const VideoDetailsPage = ({
                     <div key={vid.id}>
                       <iframe
                         src={`https://drive.google.com/file/d/${vid.id}/preview`}
-                        width="100%"
-                        height="780"
                         allow="autoplay"
-                        className="pl-5 pr-5 pt-5 border-none"
+                        className="mb-2 border-none video-frame"
                         allowFullScreen
                         title="Google Drive Video"
                       />

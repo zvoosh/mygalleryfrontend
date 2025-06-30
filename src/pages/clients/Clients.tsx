@@ -175,22 +175,8 @@ const ClientsPage = () => {
                           </div>
                         ) : (
                           <div
-                            style={{
-                              width: "100%",
-                              height: "200px",
-                              display: "flex",
-                              justifyContent: "center",
-                              alignItems: "center",
-                            }}
                           >
-                            <Spin
-                              indicator={
-                                <LoadingOutlined
-                                  style={{ fontSize: 48, color: "gray" }}
-                                  spin
-                                />
-                              }
-                            />
+                            
                           </div>
                         )}
                       </article>

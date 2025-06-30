@@ -68,10 +68,8 @@ const BehindTheSceensPage = () => {
                   src={`https://drive.google.com/file/d/${
                     data?.children![0].id
                   }/preview`}
-                  width="100%"
-                  height="780"
                   allow="autoplay"
-                  className="border-none"
+                  className="border-none video-frame"
                   allowFullScreen
                   title="Google Drive Video"
                 />

@@ -140,7 +140,6 @@ const Header = () => {
             <div
               onClick={() => {
                 ctx?.setValue(false);
-                ctx?.setIndex(undefined);
               }}
               className="remove-btn"
             >

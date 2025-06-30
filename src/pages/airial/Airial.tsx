@@ -118,30 +118,31 @@ const AirialPage = () => {
           display: ctxOpen?.value ? "flex" : "none",
         }}
       >
-        <div className="mt-1">
-          <div className="video-container">
-            <figure
-              style={{
-                position: "fixed",
-                top: "50%",
-                left: "50%",
-                width: "75vw",
-                height: "75vh",
-                backgroundColor: "black",
-                zIndex: 9999,
-                transform: "translate(-50%, -50%)",
-              }}
-            >
-              <iframe
-                src={name}
-                allow="autoplay"
-                className="w-100 h-100 object-cover border-none fade-in-on-load"
-                allowFullScreen
-                title="Google Drive Video"
-              />
-            </figure>
+        {ctxOpen?.value && (
+          <div className="mt-1">
+            <div className="video-container">
+              <figure
+                style={{
+                  position: "fixed",
+                  top: "50%",
+                  left: "50%",
+                  backgroundColor: "black",
+                  zIndex: 9999,
+                  transform: "translate(-50%, -50%)",
+                }}
+                className="flex justify-center align-center figure-size"
+              >
+                <iframe
+                  src={name}
+                  allow="autoplay"
+                  className="video-frame object-cover border-none fade-in-on-load"
+                  allowFullScreen
+                  title="Google Drive Video"
+                />
+              </figure>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </main>
   );
