@@ -1,3 +1,7 @@
+.fade-in-on-load-content {
+  opacity: 0;
+  animation: fadeInContent 1s ease-in-out forwards;
+}
 @media (max-width: 479px) {
   .client-details-container {
     width: 100%;
@@ -342,5 +346,14 @@
     color: black;
     background-color: white;
     cursor: pointer;
+  }
+}
+
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

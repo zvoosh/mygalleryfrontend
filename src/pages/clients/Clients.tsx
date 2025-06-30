@@ -89,10 +89,10 @@ const ClientsPage = () => {
     );
   if (isClientsError && error) return <div>Error loading files.</div>;
   return (
-    <div className="pb-2 text-gray w-100 h-100 flex flex-column normal-font font-12">
+    <div className="pb-2 text-gray w-100 h-100 flex flex-column normal-font font-12 fade-in-on-load-content">
       {thumbnail && thumbnail.children ? (
-        <>
-          <div className="thumbnail">
+        <div className="fade-in-on-load-content">
+          <div className="thumbnail ">
             <img
               loading="lazy"
               src={`https://drive.google.com/thumbnail?id=${thumbnail.children[0].id}&sz=w1000`}
@@ -186,7 +186,7 @@ const ClientsPage = () => {
               </div>
             </div>
           </div>
-        </>
+        </div>
       ) : (
         <div
           style={{
