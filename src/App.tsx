@@ -12,7 +12,7 @@ function App() {
     <MyDataProvider>
       <MyArialFolderProvider>
         <MyProvider>
-          <BrowserRouter basename="/vaco/">
+          <BrowserRouter>
             <ScrollToTop />
             <AnimatedRoutes />
           </BrowserRouter>

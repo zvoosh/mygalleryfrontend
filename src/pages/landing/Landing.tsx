@@ -6,10 +6,9 @@ import "../../styles/landing.scss";
 import { Link } from "react-router";
 import { useFolderTreeQuery } from "../../api/queries";
 
+const FOLDER_ID = "1_qQjN6SWT-9y0hRwUd1_mFpqnkT-GG9X";
 const LandingPage = () => {
-  const { data, error } = useFolderTreeQuery(
-    "1_qQjN6SWT-9y0hRwUd1_mFpqnkT-GG9X"
-  );
+  const { data, error } = useFolderTreeQuery(FOLDER_ID);
   if (error) return <div>Error loading files.</div>;
   return (
     <main
