@@ -139,6 +139,42 @@ const VideoPage = () => {
         ) : (
           <div></div>
         )}
+        {findImageId(ctx, "PodcastThumbnail") ? (
+          <Link to="/video-podcast" className="division-card">
+            <img
+              loading="eager"
+              src={`https://drive.google.com/thumbnail?id=${findImageId(
+                ctx,
+                "PodcastThumbnail"
+              )}&sz=w1000`}
+              alt="Poster image for feature film"
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+            <div className="division-overlay">
+              <p className="division-overlay-text">PODCAST</p>
+            </div>
+          </Link>
+        ) : (
+          <div></div>
+        )}
+        {findImageId(ctx, "PromoThumbnail") ? (
+          <Link to="/video-promo" className="division-card">
+            <img
+              loading="eager"
+              src={`https://drive.google.com/thumbnail?id=${findImageId(
+                ctx,
+                "PromoThumbnail"
+              )}&sz=w1000`}
+              alt="Poster image for feature film"
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+            <div className="division-overlay">
+              <p className="division-overlay-text">PROMO</p>
+            </div>
+          </Link>
+        ) : (
+          <div></div>
+        )}
       </section>
     </main>
   );

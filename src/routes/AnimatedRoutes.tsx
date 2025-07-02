@@ -146,6 +146,22 @@ const AnimatedRoutes = () => {
             }
           />
           <Route
+            path="/video-podcast"
+            element={
+              <PageWrapper>
+                <FeaturePage />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/video-promo"
+            element={
+              <PageWrapper>
+                <FeaturePage />
+              </PageWrapper>
+            }
+          />
+          <Route
             path="/behind-the-sceens"
             element={
               <PageWrapper>

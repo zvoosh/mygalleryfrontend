@@ -89,7 +89,7 @@
   }
   .video-thumbnail {
     width: 100vw;
-    height: 50vh;
+    aspect-ratio: 2.76 / 1;
     padding: 5rem;
   }
   .video-grid {

@@ -43,6 +43,22 @@ const defaults = [
     foldervideo: "CommercialVideo",
     folderthumbnail: "CommercialThumbnail",
   },
+  {
+    key: "podcast",
+    title: "Podcast",
+    description: `
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias commodi ea ducimus, magni placeat voluptates, inventore voluptas incidunt optio accusamus facilis? Accusantium optio quia porro, inventore, quaerat autem perferendis ullam nostrum aspernatur voluptas similique esse at odit eum, itaque iure nobis dolorem illo. Iure amet modi quae, aliquid ut aut!`,
+    foldervideo: "PodcastVideo",
+    folderthumbnail: "PodcastThumbnail",
+  },
+  {
+    key: "promo",
+    title: "Promo",
+    description: `
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias commodi ea ducimus, magni placeat voluptates, inventore voluptas incidunt optio accusamus facilis? Accusantium optio quia porro, inventore, quaerat autem perferendis ullam nostrum aspernatur voluptas similique esse at odit eum, itaque iure nobis dolorem illo. Iure amet modi quae, aliquid ut aut!`,
+    foldervideo: "PromoVideo",
+    folderthumbnail: "PromoThumbnail",
+  },
 ];
 
 const FeaturePage = () => {
