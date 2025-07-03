@@ -2,7 +2,7 @@ import type { DriveItem } from "../services/ctx/data.ctx";
 
 export const fetchFolderContents = async (folderId: string) => {
   const res = await fetch(
-    `http://185.181.10.93:5000/api/fetch-folder?folderId=${folderId}`
+    `https://vaco-backend.onrender.com/api/fetch-folder?folderId=${folderId}`
   );
   if (!res.ok) throw new Error("Failed to fetch folder");
   return await res.json(); // array of file metadata
@@ -10,7 +10,7 @@ export const fetchFolderContents = async (folderId: string) => {
 
 export const fetchFileContent = async (fileId: string) => {
   const res = await fetch(
-    `http://185.181.10.93:5000/api/fetch-text?fileId=${fileId}`
+    `https://vaco-backend.onrender.com/api/fetch-text?fileId=${fileId}`
   );
   if (!res.ok) throw new Error("Failed to fetch file content");
   return await res.text();
@@ -21,7 +21,7 @@ export const isFolder = (file: any) =>
 
 export const fetchFolderTree = async (folderId: string): Promise<DriveItem> => {
   const res = await fetch(
-    `http://185.181.10.93:5000/api/fetch-folder?folderId=${folderId}`
+    `https://vaco-backend.onrender.com/api/fetch-folder?folderId=${folderId}`
   );
   if (!res.ok) throw new Error("Failed to fetch folder tree");
   return await res.json(); // already nested DriveItem object
