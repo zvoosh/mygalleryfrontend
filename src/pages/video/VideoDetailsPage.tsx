@@ -23,7 +23,6 @@ const VideoDetailsPage = ({
     f.name.includes(foldervideo)
   );
   const imageId = thumbnailFolder?.children?.[0]?.id;
-
   useEffect(() => {
     if (!ctx?.data) {
       navigate("/video");

@@ -67,13 +67,13 @@ const VideoPage = () => {
         ) : (
           <div></div>
         )}
-        {findImageId(ctx, "DocumentaryFeature") ? (
+        {findImageId(ctx, "DocumentaryThumbnail") ? (
           <Link to="/video-documentary" className="division-card">
             <img
               loading="eager"
               src={`https://drive.google.com/thumbnail?id=${findImageId(
                 ctx,
-                "DocumentaryFeature"
+                "DocumentaryThumbnail"
               )}&sz=w1000`}
               alt="Poster image for feature film"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
