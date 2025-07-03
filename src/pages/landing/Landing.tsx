@@ -53,7 +53,7 @@ const LandingPage = () => {
           </h2>
           <p className="uppercase italic pb-1">Photographer & storyteller</p>
           <div className="w-100 flex justify-center">
-            <Link to="/video" className="landing-btn">
+            <Link to="/video" className="landing-btn decoration-none">
               View work
             </Link>
           </div>
