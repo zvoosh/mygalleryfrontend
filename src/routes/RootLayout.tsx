@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router";
+import { Outlet } from "react-router";
 import { Header } from "../components/Header";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const RootLayout = () => {
@@ -10,7 +10,6 @@ const RootLayout = () => {
       },
     },
   });
-  const location = useLocation();
   return (
     <div
       style={{

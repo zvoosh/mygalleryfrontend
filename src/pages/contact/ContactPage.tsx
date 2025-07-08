@@ -1,4 +1,3 @@
-import img from "../../assets/unnamed.jpg";
 import "../../styles/contact.scss";
 
 const ContactPage = () => {

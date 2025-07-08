@@ -3,6 +3,7 @@ import "../../styles/portrait.scss";
 import { Image, Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { fetchFiles } from "../../api";
+import { useEffect, useState } from "react";
 
 const PortraitPage = () => {
   const { data, isLoading, error } = useQuery({
@@ -12,9 +13,16 @@ const PortraitPage = () => {
     retry: 1,
   });
 
-  
-  const allLoading =
-    isLoading
+  const [loadedCount, setLoadedCount] = useState(0);
+  const totalImages = data?.length || 0;
+  const allImagesLoaded = loadedCount === totalImages;
+
+  useEffect(() => {
+    // Reset loaded counter when new data comes in
+    if (data) setLoadedCount(0);
+  }, [data]);
+
+  const allLoading = isLoading;
   if (allLoading)
     return (
       <div
@@ -46,20 +54,22 @@ const PortraitPage = () => {
       <div className="w-100 h-100 flex justify-center">
         <div className="w-100 h-100 flex justify-center">
           <div className="card-grid">
-            {data ? (
+            {data && data.length ? (
               <Image.PreviewGroup>
                 {data.map((element: any, index: number) => (
                   <Image
-                    loading="eager"
                     key={index}
                     src={element.url}
                     alt={element.name}
                     className="responsive"
+                    preview={false}
                     style={{
                       width: "100%",
                       height: "100%",
                       objectFit: "cover",
                     }}
+                    onLoad={() => setLoadedCount((prev) => prev + 1)}
+                    onError={() => setLoadedCount((prev) => prev + 1)}
                   />
                 ))}
               </Image.PreviewGroup>
