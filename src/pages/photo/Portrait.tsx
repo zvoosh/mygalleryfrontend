@@ -22,18 +22,9 @@ const PortraitPage = () => {
     if (data) setLoadedCount(0);
   }, [data]);
 
-  const allLoading = isLoading;
-  if (allLoading)
+  if (isLoading || (data && !allImagesLoaded)) {
     return (
-      <div
-        style={{
-          width: "100vw",
-          height: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+      <div className="page-loader">
         <Spin
           indicator={
             <LoadingOutlined style={{ fontSize: 48, color: "gray" }} spin />
@@ -41,6 +32,7 @@ const PortraitPage = () => {
         />
       </div>
     );
+  }
   if (error) return <div>Error loading files.</div>;
   return (
     <main className="pt-2">
