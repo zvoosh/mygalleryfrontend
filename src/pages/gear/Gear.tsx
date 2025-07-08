@@ -6,7 +6,7 @@ const GearPage = () => {
       <div className="flex justify-center w-100 h-100">
         <div className="basic-container">
           <div>
-            <h1 className="font-20 normal-font pb-2 text-white w-100">
+            <h1 className="font-20 header-font pb-2 text-white w-100">
               Gear
             </h1>
             <div className="pb-2 normal-font font-12">

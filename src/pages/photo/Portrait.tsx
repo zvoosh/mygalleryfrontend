@@ -1,16 +1,39 @@
+import { useQuery } from "@tanstack/react-query";
 import "../../styles/portrait.scss";
-import { useContext } from "react";
-import { Image } from "antd";
-import { MyDataContext } from "../../services/ctx/data.ctx";
-import { filterFolder } from "../../hooks";
-import { Link } from "react-router";
+import { Image, Spin } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
+import { fetchFiles } from "../../api";
 
 const PortraitPage = () => {
-  const ctxData = useContext(MyDataContext);
-  const corporatePhotos =
-    ctxData?.data &&
-    filterFolder(ctxData.data, "PortraitPhoto")?.children?.[0]?.children;
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["files"],
+    queryFn: () => fetchFiles(),
+    staleTime: 5 * 60_000,
+    retry: 1,
+  });
 
+  
+  const allLoading =
+    isLoading
+  if (allLoading)
+    return (
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Spin
+          indicator={
+            <LoadingOutlined style={{ fontSize: 48, color: "gray" }} spin />
+          }
+        />
+      </div>
+    );
+  if (error) return <div>Error loading files.</div>;
   return (
     <main className="pt-2">
       <h1
@@ -23,13 +46,13 @@ const PortraitPage = () => {
       <div className="w-100 h-100 flex justify-center">
         <div className="w-100 h-100 flex justify-center">
           <div className="card-grid">
-            {corporatePhotos && corporatePhotos.length > 0 ? (
+            {data ? (
               <Image.PreviewGroup>
-                {corporatePhotos.map((element: any, index: number) => (
+                {data.map((element: any, index: number) => (
                   <Image
                     loading="eager"
                     key={index}
-                    src={`https://drive.google.com/thumbnail?id=${element.id}&sz=w1000`}
+                    src={element.url}
                     alt={element.name}
                     className="responsive"
                     style={{
@@ -43,19 +66,6 @@ const PortraitPage = () => {
             ) : (
               <div className="text-center text-white">
                 No images available at this time
-                <Link to="/photo" className="w-100 mt-1 flex justify-center">
-                  <div
-                    className="decoration-none text-black"
-                    style={{
-                      width: "fit-content",
-                      border: "1px solid white",
-                      backgroundColor: "white",
-                      padding: ".5rem 1rem",
-                    }}
-                  >
-                    Back
-                  </div>
-                </Link>
               </div>
             )}
           </div>

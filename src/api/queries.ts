@@ -1,25 +1,23 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchFolderContents, fetchFolderTree } from "./hooks";
-import type { DriveItem } from "../services/ctx/data.ctx";
+import { fetchFiles, fetchSingleFile } from "./hooks";
 
-export const useFolderTreeQuery = (folderId: string | undefined) => {
-  return useQuery<DriveItem>({
-    queryKey: ["folder-tree", folderId],
+export const useSingleFileQuery = (folderId: string | undefined) => {
+  return useQuery({
+    queryKey: ["file", folderId],
     queryFn: async () => {
       if (!folderId) throw new Error("No folder ID provided");
-      return fetchFolderTree(folderId);
+      return fetchSingleFile(folderId);
     },
     staleTime: 5 * 60 * 1000,
     enabled: true,
     retry: 1,
   });
 };
-export const useFolderContent = (folderId: string | undefined) => {
-  return useQuery<DriveItem>({
-    queryKey: ["folder-content", folderId],
+export const useFilesQuery = (folderId: string | undefined) => {
+  return useQuery({
+    queryKey: ["files", folderId],
     queryFn: async () => {
-      if (!folderId) throw new Error("No folder ID provided");
-      return fetchFolderContents(folderId);
+      return fetchFiles();
     },
     staleTime: 5 * 60 * 1000,
     enabled: true,

@@ -23,7 +23,7 @@ const RootLayout = () => {
       className="scrollable-div"
     >
       <QueryClientProvider client={queryClient}>
-        {location.pathname !== "/" && <Header />}
+        <Header />
         <Outlet />
       </QueryClientProvider>
     </div>
