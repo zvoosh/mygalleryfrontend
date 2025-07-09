@@ -3,7 +3,6 @@ import "../../styles/portrait.scss";
 import { Image, Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { fetchFiles } from "../../api";
-import { useEffect, useState } from "react";
 
 const PortraitPage = () => {
   const { data, isLoading, error } = useQuery({
@@ -13,16 +12,7 @@ const PortraitPage = () => {
     retry: 1,
   });
 
-  const [loadedCount, setLoadedCount] = useState(0);
-  const totalImages = data?.length || 0;
-  const allImagesLoaded = loadedCount === totalImages;
-
-  useEffect(() => {
-    // Reset loaded counter when new data comes in
-    if (data) setLoadedCount(0);
-  }, [data]);
-
-  if (isLoading || (data && !allImagesLoaded)) {
+  if (isLoading ) {
     return (
       <div className="page-loader">
         <Spin
@@ -60,8 +50,6 @@ const PortraitPage = () => {
                       height: "100%",
                       objectFit: "cover",
                     }}
-                    onLoad={() => setLoadedCount((prev) => prev + 1)}
-                    onError={() => setLoadedCount((prev) => prev + 1)}
                   />
                 ))}
               </Image.PreviewGroup>
