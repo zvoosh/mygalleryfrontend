@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../styles/header.scss";
 import { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -39,7 +39,8 @@ const Header = () => {
           </div>
         </div>
         <div className="header-center">DUŠAN</div>
-        <div className="header-right"></div>
+        <div className="header-right">
+        </div>
       </div>
 
       <div className="flex flex-row justify-center links-container font-14">

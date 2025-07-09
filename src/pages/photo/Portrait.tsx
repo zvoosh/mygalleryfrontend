@@ -44,7 +44,7 @@ const PortraitPage = () => {
                     src={element.url}
                     alt={element.name}
                     className="responsive"
-                    preview={false}
+                    preview={true}
                     style={{
                       width: "100%",
                       height: "100%",
