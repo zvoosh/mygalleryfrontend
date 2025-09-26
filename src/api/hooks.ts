@@ -11,6 +11,7 @@ export const fetchFiles = async () => {
     headers: {
       Authorization: `Basic ${credentials}`,
       "Content-Type": "application/json",
+      "Cache-Control": "no-cache",
     },
   });
   if (!res.ok) throw new Error("Failed to fetch folder");
